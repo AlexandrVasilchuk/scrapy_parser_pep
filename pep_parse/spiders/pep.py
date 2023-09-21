@@ -19,7 +19,7 @@ class PepSpider(scrapy.Spider):
     def parse_pep(self, response):
         package_name = response.css('section#pep-content h1::text').get()
         yield PepParseItem(
-                name=package_name,
-                number=match(r'.*?(\d+).*', package_name).group(1),
-                status=response.css('dt:contains("Status") + dd ::text').get()
+            name=package_name,
+            number=match(r'.*?(\d+).*', package_name).group(1),
+            status=response.css('dt:contains("Status") + dd ::text').get(),
         )

@@ -2,8 +2,14 @@ import csv
 from collections import defaultdict
 from datetime import datetime
 
-from pep_parse.settings import (AMOUNT_STATUSES, BASE_DIR, DATETIME_PATTERN,
-                                ENCODING, RESULTS_DIR, SUMMARY_STATUS_COLUMNS)
+from pep_parse.settings import (
+    AMOUNT_STATUSES,
+    BASE_DIR,
+    DATETIME_PATTERN,
+    ENCODING,
+    RESULTS_DIR,
+    SUMMARY_STATUS_COLUMNS,
+)
 
 
 class PepParsePipeline:
@@ -20,8 +26,10 @@ class PepParsePipeline:
     def close_spider(self, spider):
         with open(self.file_name, 'w', encoding=ENCODING, newline='') as file:
             writer = csv.writer(file)
-            writer.writerows((
-                SUMMARY_STATUS_COLUMNS,
-                *self.amount_statuses.items(),
-                (AMOUNT_STATUSES, sum(self.amount_statuses.values())),
-            ))
+            writer.writerows(
+                (
+                    SUMMARY_STATUS_COLUMNS,
+                    *self.amount_statuses.items(),
+                    (AMOUNT_STATUSES, sum(self.amount_statuses.values())),
+                )
+            )
