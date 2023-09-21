@@ -26,8 +26,14 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
-        with open(self.results_dir / f'status_summary_{self.suffix}.csv', 'w', encoding=ENCODING) as file:
-            writer = csv.writer(file, dialect=csv.excel, quoting=csv.QUOTE_MINIMAL)
+        with open(
+            self.results_dir / f'status_summary_{self.suffix}.csv',
+            'w',
+            encoding=ENCODING,
+        ) as file:
+            writer = csv.writer(
+                file, dialect=csv.excel, quoting=csv.QUOTE_MINIMAL
+            )
             writer.writerows(
                 (
                     SUMMARY_STATUS_COLUMNS,
