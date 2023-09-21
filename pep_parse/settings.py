@@ -2,7 +2,6 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 RESULTS_DIR = 'results'
-(BASE_DIR / RESULTS_DIR).mkdir(exist_ok=True)
 
 DATETIME_PATTERN = '%Y-%m-%dT%H-%M-%S'
 ENCODING = 'UTF-8'
